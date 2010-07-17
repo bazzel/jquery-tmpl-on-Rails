@@ -13,3 +13,14 @@ TODO:
      =link_to 'Click me', recipe_path(recipe)
  * How about using expression/operators in a partial. Can I port them to jquery.tmpl (and do I want to)?
  
+* Installation
+
+  cp config/database.sample.yml config/database.yml
+  gem install bundler
+  bundler install --relock
+  rake db:create
+  rake db:migrate
+
+* Usage
+
+  script/server
