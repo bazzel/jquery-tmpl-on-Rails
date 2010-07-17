@@ -1,0 +1,12 @@
+- title "Recipe"
+
+%p
+  %strong Name:
+  =h @recipe.name
+
+%p
+  = link_to "Edit", edit_recipe_path(@recipe)
+  |
+  = link_to "Destroy", @recipe, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", recipes_path

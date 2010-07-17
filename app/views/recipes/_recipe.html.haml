@@ -1,0 +1,5 @@
+%tr
+  %td= "#{recipe.id}: #{h recipe.name}"
+  %td= link_to 'Show', recipe_path(recipe)
+  %td= link_to 'Edit', edit_recipe_path(recipe)
+  %td= link_to 'Destroy', recipe_path(recipe), :confirm => 'Are you sure?', :method => :delete

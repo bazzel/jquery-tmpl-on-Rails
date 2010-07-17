@@ -1,0 +1,28 @@
+- title "Recipes"
+- content_for(:head) do
+  :javascript
+    $(function() {
+      $.ajax({
+        url: '#{recipes_path}',
+        dataType: 'json',
+        success: function(data) {
+          $("#recipeTemplate")
+            .unescape()
+            .tmpl(data)
+            .appendTo("#recipesTable");
+        }
+      });
+    });
+    
+    $.fn.unescape = function() {
+       return $(this).text(unescape($(this).text()));
+    }
+    
+%script{ :type => "text/html", :id => "recipeTemplate" }
+  = render :partial => 'recipe', :object => Recipe.template
+
+%table#recipesTable
+  %tr
+    %th Name
+  
+%p= link_to "New Recipe", new_recipe_path

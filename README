@@ -1,0 +1,15 @@
+Using the jQuery Template plugin in Rails
+
+This is still experimental.
+
+After reading http://blog.reybango.com/2010/07/09/not-using-jquery-javascript-templates-youre-really-missing-out/ I was eagered to find out if I could make this work in Rails. So I started this project, which at the moment:
+
+ * Can display a simple AR model object in a table row (TR)
+ 
+TODO:
+ * Can I use
+     =link_to 'Click me', recipe
+   instead of
+     =link_to 'Click me', recipe_path(recipe)
+ * How about using expression/operators in a partial. Can I port them to jquery.tmpl (and do I want to)?
+ 
