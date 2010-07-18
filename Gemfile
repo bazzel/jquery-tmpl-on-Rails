@@ -10,7 +10,7 @@ gem "compass",             ">=0.10.2"
 gem "haml",                ">=3.0.12"
 gem 'nifty-generators'
 gem 'sqlite3-ruby'
-
+gem 'will_paginate',      '2.3.14'
 group :test do
   gem 'remarkable_rails', '3.1.13', :require => nil
   gem 'rspec',            '1.3.0'

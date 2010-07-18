@@ -2,27 +2,31 @@
 - content_for(:head) do
   :javascript
     $(function() {
+      $("#recipeTemplate").unescape();
+      
       $.ajax({
         url: '#{recipes_path}',
         dataType: 'json',
         success: function(data) {
           $("#recipeTemplate")
-            .unescape()
-            .tmpl(data)
+            .tmpl(data.recipes)
             .appendTo("#recipesTable");
         }
       });
     });
     
     $.fn.unescape = function() {
-       return $(this).text(unescape($(this).text()));
+      $(this).text(unescape($(this).text()));
+      return $(this);
     }
     
 %script{ :type => "text/html", :id => "recipeTemplate" }
-  = render :partial => 'recipe', :object => Recipe.template
+  = render :partial => 'recipe', :object => Recipe.jquery_tmpl
 
 %table#recipesTable
   %tr
     %th Name
   
+= will_paginate @recipes
+
 %p= link_to "New Recipe", new_recipe_path

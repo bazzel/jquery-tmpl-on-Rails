@@ -1,11 +1,22 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    params[:per_page] ||= 10
+    @recipes = Recipe.paginate :page => params[:page], :per_page => params[:per_page]
     
     respond_to do |wants|
       wants.html {  }
       wants.js do
-        render :json => @recipes
+        # render :json => @recipes
+        # render :text => '{"recipes" : [{"recipe": {"name" : "Foo", "id" : 1}}, {"recipe": {"name" : "Bar", "id" : 2}}], "per_page" : 10}'
+        # render :text => '{"recipes" : ' + @recipes.to_json + ', "per_page" : ' + @recipes.per_page + '}'
+
+        render :text => {
+          :recipes => @recipes,
+          :current_page => @recipes.current_page,
+          :per_page => @recipes.per_page,
+          :total_entries => @recipes.total_entries
+        }.to_json
+
       end
     end
     

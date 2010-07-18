@@ -1,13 +1,13 @@
 module JqueryTmpl
 
-  # Add a class method 'template' to all models.
+  # Add a class method 'jquery_tpl' to all models.
   # This method returns an object where all attributes
   # are strings in a format useable by jquery.tmpl.
   # If you pass a template object as an object when rendering
   # a partial, this will get you a piece of HTML to be used
   # as a jquery.tmpl.
   # See http://github.com/nje/jquery-tmpl
-  def template
+  def jquery_tmpl
     template = new
     
     # Returns for every attribute of the ActiveRecord object
