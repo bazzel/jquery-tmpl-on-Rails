@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Recipe do
   describe "template" do
     it "returns attribute values as jqery.tmpl placeholder" do
-      template = Recipe.template
+      jquery_tmpl = Recipe.jquery_tmpl
       
-      template.id.should eql("${ recipe['id'] }")
-      template.name.should eql("${ recipe['name'] }")
-      template.created_at.should eql("${ recipe['created_at'] }")
-      template.updated_at.should eql("${ recipe['updated_at'] }")
+      jquery_tmpl.id.should eql("${ recipe['id'] }")
+      jquery_tmpl.name.should eql("${ recipe['name'] }")
+      jquery_tmpl.created_at.should eql("${ recipe['created_at'] }")
+      jquery_tmpl.updated_at.should eql("${ recipe['updated_at'] }")
     end
   end
 end

@@ -4,14 +4,26 @@
     $(function() {
       $("#recipeTemplate").unescape();
       
-      $.ajax({
-        url: '#{recipes_path}',
-        dataType: 'json',
-        success: function(data) {
-          $("#recipeTemplate")
-            .tmpl(data.recipes)
-            .appendTo("#recipesTable");
-        }
+      $('#more').live('click', function(e){
+      var el  = $(this),
+          url = el.attr('href');
+        $.ajax({
+          url: url,
+          dataType: 'json',
+          success: function(data) {
+            $("#recipeTemplate")
+              .tmpl(data.recipes)
+              .appendTo("#recipesTable");
+            if (data.page == null) {
+              el.parents('tfoot').remove();
+            } else {
+              el.attr('href', function() {
+                return this.href.replace(/(page=)\d+/,'$1' + data.page);
+              });
+            }
+          }
+        });
+        e.preventDefault();
       });
     });
     
@@ -24,9 +36,15 @@
   = render :partial => 'recipe', :object => Recipe.jquery_tmpl
 
 %table#recipesTable
-  %tr
-    %th Name
+  %thead
+    %tr
+      %th Name
+  - if @recipes.next_page
+    %tfoot
+      %tr
+        %td= link_to "More", recipes_path(:page => @recipes.next_page), :id => "more"
+  %tbody
+    = render :partial => 'recipe', :collection => @recipes
   
-= will_paginate @recipes
-
 %p= link_to "New Recipe", new_recipe_path
+

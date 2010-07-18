@@ -18,12 +18,14 @@ module JqueryTmpl
     #   tmpl.name                  # => "${ recipe['name'] }"
     #   tmpl.created_at            # => "${ recipe['created_at'] }"
     #   tmpl.updated_at            # => "${ recipe['updated_at'] }"
-    (template.attribute_names << "id").each do |attr|
-      define_method(attr.to_sym) do
-        "${ #{self.class.class_name.underscore}['#{attr}'] }"
+    template.class_eval do
+      (template.attribute_names << "id").each do |attr|
+        define_method(attr.to_sym) do
+          "${ #{self.class.class_name.underscore}['#{attr}'] }"
+        end
       end
     end
-
+    
     return template
   end
   
