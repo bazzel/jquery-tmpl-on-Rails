@@ -4,12 +4,17 @@
     $(function() {
       $("#recipeTemplate").unescape();
       
-      $('#more').live('click', function(e){
-      var el  = $(this),
-          url = el.attr('href');
+      var clickHandler = function(e){
+        var el   = $(this),
+            url  = el.attr('href'),
+            href = el.href;
+
         $.ajax({
           url: url,
           dataType: 'json',
+          beforeSend: function(XMLHttpRequest) {
+            el.unbind('click');
+          },
           success: function(data) {
             $("#recipeTemplate")
               .tmpl(data.recipes)
@@ -18,13 +23,18 @@
               el.parents('tfoot').remove();
             } else {
               el.attr('href', function() {
-                return this.href.replace(/(page=)\d+/,'$1' + data.page);
+                return this.href.replace(/(page=)\d+/, '$1' + data.page);
               });
             }
+          },
+          complete: function(XMLHttpRequest, textStatus) {
+            el.click(clickHandler);
           }
         });
         e.preventDefault();
-      });
+      };
+      
+      $('#more').click(clickHandler);
     });
     
     $.fn.unescape = function() {
@@ -47,4 +57,3 @@
     = render :partial => 'recipe', :collection => @recipes
   
 %p= link_to "New Recipe", new_recipe_path
-
