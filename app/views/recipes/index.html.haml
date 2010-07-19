@@ -22,7 +22,7 @@
               el.parents('tfoot').remove();
             } else {
               el.attr('href', function() {
-                return this.href.replace(/(page=)\d+/, '$1' + data.page);
+                return url.replace(/(page=)\d+/, '$1' + data.page);
               });
             }
           },
