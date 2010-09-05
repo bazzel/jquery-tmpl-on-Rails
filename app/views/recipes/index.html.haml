@@ -2,8 +2,6 @@
 - content_for(:head) do
   :javascript
     $(function() {
-      $("#recipeTemplate").unescape();
-      
       var clickHandler = function(e){
         var el   = $(this),
             url  = el.attr('href');
@@ -16,9 +14,10 @@
           },
           success: function(data) {
             $("#recipeTemplate")
+              .unescape()
               .tmpl(data.recipes)
               .appendTo("#recipesTable");
-            if (data.page == null) {
+            if (data.page === null) {
               el.parents('tfoot').remove();
             } else {
               el.attr('href', function() {
@@ -37,8 +36,11 @@
     });
     
     $.fn.unescape = function() {
-      $(this).text(unescape($(this).text()));
-      return $(this);
+      return this.each(
+        function(){
+          $(this).text(unescape($(this).text()));
+        }
+      )
     }
     
 %script{ :type => "text/html", :id => "recipeTemplate" }
