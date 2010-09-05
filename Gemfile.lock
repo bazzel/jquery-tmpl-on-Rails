@@ -1,93 +1,64 @@
---- 
-dependencies: 
-  ruby-debug: 
-    group: 
-    - :development
-    version: ">= 0"
-  compass: 
-    group: 
-    - :default
-    version: ">= 0.10.2"
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.8
-  sqlite3-ruby: 
-    group: 
-    - :default
-    version: ">= 0"
-  haml: 
-    group: 
-    - :default
-    version: ">= 3.0.12"
-  rspec: 
-    group: 
-    - :test
-    version: = 1.3.0
-  rspec-rails: 
-    group: 
-    - :test
-    version: = 1.3.2
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.14
-  remarkable_rails: 
-    group: 
-    - :test
-    version: = 3.1.13
-    require: []
+GEM
+  remote: http://rubygems.org/
+  specs:
+    actionmailer (2.3.8)
+      actionpack (= 2.3.8)
+    actionpack (2.3.8)
+      activesupport (= 2.3.8)
+      rack (~> 1.1.0)
+    activerecord (2.3.8)
+      activesupport (= 2.3.8)
+    activeresource (2.3.8)
+      activesupport (= 2.3.8)
+    activesupport (2.3.8)
+    columnize (0.3.1)
+    compass (0.10.5)
+      haml (>= 3.0.4)
+    haml (3.0.18)
+    linecache (0.43)
+    nifty-generators (0.4.0)
+    rack (1.1.0)
+    rails (2.3.8)
+      actionmailer (= 2.3.8)
+      actionpack (= 2.3.8)
+      activerecord (= 2.3.8)
+      activeresource (= 2.3.8)
+      activesupport (= 2.3.8)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    remarkable (3.1.13)
+      rspec (>= 1.2.0)
+    remarkable_activerecord (3.1.13)
+      remarkable (~> 3.1.13)
+      rspec (>= 1.2.0)
+    remarkable_rails (3.1.13)
+      remarkable (~> 3.1.13)
+      remarkable_activerecord (~> 3.1.13)
+      rspec (>= 1.2.0)
+      rspec-rails (>= 1.2.0)
+    rspec (1.3.0)
+    rspec-rails (1.3.2)
+      rack (>= 1.0.0)
+      rspec (>= 1.3.0)
+    ruby-debug (0.10.3)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.3.0)
+    ruby-debug-base (0.10.3)
+      linecache (>= 0.3)
+    sqlite3-ruby (1.3.1)
+    will_paginate (2.3.14)
 
-  nifty-generators: 
-    group: 
-    - :default
-    version: ">= 0"
-specs: 
-- rake: 
-    version: 0.8.7
-- activesupport: 
-    version: 2.3.8
-- rack: 
-    version: 1.1.0
-- actionpack: 
-    version: 2.3.8
-- actionmailer: 
-    version: 2.3.8
-- activerecord: 
-    version: 2.3.8
-- activeresource: 
-    version: 2.3.8
-- columnize: 
-    version: 0.3.1
-- haml: 
-    version: 3.0.13
-- compass: 
-    version: 0.10.2
-- linecache: 
-    version: "0.43"
-- nifty-generators: 
-    version: 0.4.0
-- rails: 
-    version: 2.3.8
-- rspec: 
-    version: 1.3.0
-- remarkable: 
-    version: 3.1.13
-- remarkable_activerecord: 
-    version: 3.1.13
-- rspec-rails: 
-    version: 1.3.2
-- remarkable_rails: 
-    version: 3.1.13
-- ruby-debug-base: 
-    version: 0.10.3
-- ruby-debug: 
-    version: 0.10.3
-- sqlite3-ruby: 
-    version: 1.3.1
-- will_paginate: 
-    version: 2.3.14
-hash: eefa6a441f91a4e72c56cbb2ff9a7ecfb88d9b60
-sources: 
-- Rubygems: 
-    uri: http://rubygems.org
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass (>= 0.10.2)
+  haml (>= 3.0.12)
+  nifty-generators
+  rails (= 2.3.8)
+  remarkable_rails (= 3.1.13)
+  rspec (= 1.3.0)
+  rspec-rails (= 1.3.2)
+  ruby-debug
+  sqlite3-ruby
+  will_paginate (= 2.3.14)
